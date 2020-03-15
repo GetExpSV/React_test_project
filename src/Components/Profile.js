@@ -1,8 +1,8 @@
 import React from 'react';
-import './Profile.css';
+import profile_class from './Profile.module.css';
 
 const Profile = () => {
-    return (<div className="content">
+    return (<div className={profile_class.content}>
         <div>
             <img
                 src="https://p.bigstockphoto.com/GeFvQkBbSLaMdpKXF1Zv_bigstock-Aerial-View-Of-Blue-Lakes-And--227291596.jpg"/>
