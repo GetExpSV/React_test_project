@@ -1,0 +1,13 @@
+.nav {
+    grid-area: navbar;
+}
+
+.item a {
+    text-decoration: none;
+    color: #282c34;
+    margin-left: 20px;
+}
+
+.item a:hover {
+    background-color: lightskyblue;
+}

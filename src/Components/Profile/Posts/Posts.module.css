@@ -1,0 +1,19 @@
+.newPost{
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+.newPost textarea{
+    height: 100px;
+    width: 300px;
+    resize: none;
+    margin-top: 5px;
+}
+.newPost button{
+    margin-left: 20px;
+}
+
+.posts{
+    text-align: center;
+    margin: 10px 0px 10px 0px;
+}
