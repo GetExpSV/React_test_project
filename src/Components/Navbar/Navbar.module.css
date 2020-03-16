@@ -11,3 +11,7 @@
 .item a:hover {
     background-color: lightskyblue;
 }
+
+.item a.activeLink{
+    color: darkcyan;
+}
