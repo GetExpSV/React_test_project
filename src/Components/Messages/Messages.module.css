@@ -1,18 +1,38 @@
 .content {
-    display: flex;
+    display: grid;
+    grid-template-areas: 'person cap dialog';
+    grid-template-columns: 3fr 3px 8fr;
 }
 
 .person {
+    grid-area: person;
     margin: 5px 10px;
     width: 30%
 }
 
+.cap {
+    background-color: gray;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
 .dialog {
-    margin: 5px 10px;
+    grid-area: dialog;
+    margin: 5px 20px;
     object-position: right;
     width: 70%
 }
 
-.item:hover {
-    background-color: lightskyblue;
+
+h4 {
+    padding: 0px;
+    margin: 0px;
+    margin-left: 10%;
+    margin-top: 5px;
 }
+
+.person a {
+    text-decoration: none;
+    color: black;
+}
+

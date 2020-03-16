@@ -1,7 +1,7 @@
 import React from 'react';
 import news_class from './News.module.css';
 
-const News = () => {
+const News = (props) => {
     return(
         <div>
 

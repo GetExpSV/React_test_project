@@ -11,7 +11,7 @@ import Music from './Components/Music/Music';
 import Settings from './Components/Settings/Settings';
 
 
-const App = () => {
+const App = (props) => {
     return (
         <BrowserRouter>
             <div className="app-wrapper">

@@ -2,27 +2,7 @@
 
 }
 
-.headImg img {
-    height: 200px;
-    width: 100%;
-    border-radius: 5px;
-}
 
-.head {
-}
 
-.avatar {
-}
 
-.info {
-    margin: 0 auto;
-}
 
-.avatar img {
-    height: 200px;
-    width: 200px;
-}
-
-.profile {
-    display: flex;
-}

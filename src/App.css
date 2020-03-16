@@ -2,24 +2,24 @@
     display: grid;
     width: 100%;
     margin: 0 auto;
-    grid-template-areas:
-            'header header header'
-            'navbar content cap'
-            'footer footer footer';
+    grid-template-areas: 'header header header' 'navbar content cap' 'footer footer footer';
     grid-template-rows: 60px 1fr 60px;
     grid-template-columns: 2fr 10fr 1fr;
     grid-gap: 10px;
 
     background-color: powderblue;
 }
-.app-wrapper-content{
+
+.app-wrapper-content {
     grid-aria: content;
     background-color: white;
 }
-.cap{
+
+.cap {
     grid-area: cap;
     background-color: powderblue;
 }
+
 .App {
     text-align: center;
     margin-top: 100px;
