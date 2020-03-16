@@ -12,4 +12,5 @@
 
 .item span:hover{
     background-color: lightskyblue;
+    cursor: context-menu;
 }
