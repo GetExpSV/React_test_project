@@ -1,6 +1,6 @@
 .app-wrapper {
     display: grid;
-    width: 1300px;
+    width: 100%;
     margin: 0 auto;
     grid-template-areas:
             'header header header'
@@ -11,6 +11,11 @@
     grid-gap: 10px;
 
     background-color: powderblue;
+}
+
+.app-wrapper-content{
+    grid-aria: content;
+    background-color: white;
 }
 .cap{
     grid-area: cap;

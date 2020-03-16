@@ -1,16 +1,15 @@
 
-
-.item img{
+.item img {
     height: 50px;
     width: 50px;
     margin-right: 5px;
 }
 
-.item{
+.item {
     margin-bottom: 5px;
 }
 
-.item span:hover{
+.item span:hover {
     background-color: lightskyblue;
     cursor: context-menu;
 }
