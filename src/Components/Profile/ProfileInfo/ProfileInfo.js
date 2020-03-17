@@ -7,9 +7,8 @@ import PersonInfo from "./PersonInfo/PersonInfo";
 const ProfileInfo = (props) => {
     let avatarImg = "http://getdrawings.com/img/silhouette-avatar-12.png";
     let headerImg = "https://p.bigstockphoto.com/GeFvQkBbSLaMdpKXF1Zv_bigstock-Aerial-View-Of-Blue-Lakes-And--227291596.jpg";
-    let personInfoData = [{id: 1, name: 'Vladislav', surname: 'Savinykh', birthday: '01.01.0000'}];
 
-    let personInfo = personInfoData.map(data => <PersonInfo name={data.name} surname={data.surname}
+    let personInfo = props.personInfo.map(data => <PersonInfo name={data.name} surname={data.surname}
                                                             birthDay={data.birthday}/>)
     return (
         <div>

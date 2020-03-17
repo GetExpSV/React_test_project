@@ -12,8 +12,8 @@ import Settings from './Components/Settings/Settings';
 
 
 const App = (props) => {
-    let profileComponent = () => <Profile postsData={props.data.postsData}/>;
-    let messagesComponent = () => <Messages personData={props.data.personData} messagesData={props.data.messagesData}/>;
+    let profileComponent = () => <Profile data={props.data.profilePage}/>;
+    let messagesComponent = () => <Messages data={props.data.messagesPage}/>;
     return (
         <BrowserRouter>
             <div className="app-wrapper">
