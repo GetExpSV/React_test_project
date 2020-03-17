@@ -18,7 +18,7 @@ const App = (props) => {
         <BrowserRouter>
             <div className="app-wrapper">
                 <Header/>
-                <Navbar/>
+                <Navbar friends={props.data.messagesPage}/>
                 <div className="app-wrapper-content">
                     <Route path="/profile" render={profileComponent}/>
                     <Route path="/messages" render={messagesComponent} />

@@ -1,4 +1,12 @@
 .item{
+    padding: 10px;
+}
+
+.image{
+    height: 50px;
+    width: 50px;
+    padding-right: 5px;
+    border-radius: 30px;
 }
 
 a.active {

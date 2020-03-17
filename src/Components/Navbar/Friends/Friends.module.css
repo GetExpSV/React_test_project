@@ -1,0 +1,15 @@
+.item img{
+    height: 30px;
+    width: 30px;
+    border-radius: 30px;
+    margin-left: 10px;
+}
+
+.item{
+    margin-top: 50px;
+}
+
+.item .text{
+    text-align: center;
+    margin-bottom: 10px;
+}
