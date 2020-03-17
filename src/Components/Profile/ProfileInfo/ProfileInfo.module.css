@@ -1,0 +1,12 @@
+
+.head {
+}
+
+.profile {
+    display: grid;
+    grid-template-columns: 400px 1fr;
+}
+
+.info {
+    margin-top: 50px;
+}
