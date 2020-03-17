@@ -4,23 +4,33 @@ import Dialog from './Dialog/Dialog'
 import DialogItem from "./DialogItem/DialogItem";
 
 const Messages = () => {
+
+    let personData =
+        [{id: 1, name: 'Vasya'},
+            {id: 2, name: 'Masha'},
+            {id: 3, name: 'Vova'},
+            {id: 4, name: 'Alex'},
+            {id: 5, name: "Ivan"},
+            {id: 6, name: 'Anna'},
+            {id: 7, name: 'Mikhail'},
+            {id: 8, name: 'Ivanov'}];
+
+    let messagesData =
+        [{id: 1, message: 'Hi'},
+            {id: 2, message: 'How are you?'}];
+
+    let dialogsArray = personData.map(data => <DialogItem name={data.name} id={data.id}/>);
+    let messagesArray = messagesData.map(data => <Dialog message={data.message}/>);
+
     return (
         <div>
             <h4>Dialogs</h4>
             <div className={messages_class.content}>
                 <div className={messages_class.person}>
-                    <DialogItem name="Vasya" id="1"/>
-                    <DialogItem name="Masha" id="2"/>
-                    <DialogItem name="Vova" id="3"/>
-                    <DialogItem name="Alex" id="4"/>
-                    <DialogItem name="Ivan" id="5"/>
-                    <DialogItem name="Anna" id="6"/>
-                    <DialogItem name="Mikhail" id="7"/>
-                    <DialogItem name="Ivanov" id="8"/>
+                    {dialogsArray}
                 </div>
-                <div className={messages_class.cap}></div>
                 <div className={messages_class.dialog}>
-                    <Dialog messages="Hi"/>
+                    {messagesArray}
                 </div>
             </div>
         </div>

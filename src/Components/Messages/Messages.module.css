@@ -1,26 +1,20 @@
 .content {
     display: grid;
-    grid-template-areas: 'person cap dialog';
-    grid-template-columns: 3fr 3px 8fr;
+    grid-template-areas: 'person dialog';
+    grid-template-columns: 3fr 8fr;
 }
 
 .person {
     grid-area: person;
     margin: 5px 10px;
-    width: 30%
-}
-
-.cap {
-    background-color: gray;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    border-right: 3px solid gray;
 }
 
 .dialog {
     grid-area: dialog;
     margin: 5px 20px;
     object-position: right;
-    width: 70%
+    width: 70%;
 }
 
 

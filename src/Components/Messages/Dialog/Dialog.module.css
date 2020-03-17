@@ -1,6 +1,9 @@
 .message img {
-    height: 15px;
-    width: 15px;
-    border-radius: 30px;
-    margin-right: 10px;
+     height: 15px;
+     width: 15px;
+     border-radius: 30px;
+     margin-right: 10px;
+ }
+
+.message .item{
 }
