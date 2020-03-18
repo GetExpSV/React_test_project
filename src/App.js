@@ -12,16 +12,17 @@ import Settings from './Components/Settings/Settings';
 
 
 const App = (props) => {
-    let profileComponent = () => <Profile data={props.data.profilePage}/>;
-    let messagesComponent = () => <Messages data={props.data.messagesPage}/>;
+    let profileComponent = () => <Profile data={props.data.profilePage} addPost={props.addPost} addLikeToPost={props.addLikeToPost}/>;
+    let messagesComponent = () => <Messages data={props.data.messagesPage} addMessage={props.addMessage}/>;
     return (
         <BrowserRouter>
             <div className="app-wrapper">
                 <Header/>
                 <Navbar friends={props.data.messagesPage}/>
                 <div className="app-wrapper-content">
+                    <Route exact path="/" render={profileComponent}/>
                     <Route path="/profile" render={profileComponent}/>
-                    <Route path="/messages" render={messagesComponent} />
+                    <Route path="/messages" render={messagesComponent}/>
                     <Route path="/news" component={News}/>
                     <Route path="/music" component={Music}/>
                     <Route path="/settings" component={Settings}/>

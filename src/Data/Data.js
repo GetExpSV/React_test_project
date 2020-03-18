@@ -1,3 +1,4 @@
+import {renderTree} from "../Render";
 
 let Data = {
     profilePage: {
@@ -11,8 +12,26 @@ let Data = {
                 {id: 4, name: 'Alex', image: 'https://c7.hotpng.com/preview/406/211/692/5bd7bf9d2fae5.jpg'},
                 {id: 5, name: "Ivan", image: 'https://toppng.com/uploads/preview/andasnake-discord-emoji-admiral-bahroo-christmas-emotes-115629254478qzen15w5i.png'}],
         messagesData:[{id: 1, message: 'Hi'},
-                {id: 2, message: 'How are you?'}]
+                {id: 2, message: 'How are you?'},
+            {id: 1, message: 'I\'m fine'}]
     }
+}
+
+export let addPost = (post) =>{
+    Data.profilePage.postsData.push(post);
+    renderTree(Data);
+}
+
+export let addMessage = (message) => {
+    Data.messagesPage.messagesData.push(message);
+    renderTree(Data);
+}
+
+export let addLikeToPost = (id) =>{
+    Data.profilePage.postsData.map(data=>{
+        if(data.id === id) data.likeCount++;
+    })
+    renderTree(Data);
 }
 
 export default Data;

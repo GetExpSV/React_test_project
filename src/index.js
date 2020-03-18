@@ -1,11 +1,10 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
 import Data from './Data/Data';
+import {renderTree} from "./Render";
 
-ReactDOM.render(<App data={Data}/>, document.getElementById('root'));
+renderTree(Data);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

@@ -4,9 +4,10 @@
 
 .profile {
     display: grid;
-    grid-template-columns: 400px 1fr;
+    grid-template-columns: 0.5fr 1fr;
 }
 
 .info {
     margin-top: 50px;
+    margin-left: 10px;
 }

@@ -1,6 +1,7 @@
 .content {
     display: grid;
-    grid-template-areas: 'person dialog';
+    grid-template-areas: 'person dialog' 'person textItem';
+    grid-template-rows: 1fr 0.1fr;
     grid-template-columns: 3fr 8fr;
 }
 
@@ -30,3 +31,16 @@ h4 {
     color: black;
 }
 
+.textItem{
+    margin: 10px;
+    margin-top: 100px;
+    grid-area: textItem;
+    text-align: right;
+    width:90%;
+}
+
+.textItem textarea{
+    resize: none;
+    height: 100px;
+    width: 100%;
+}

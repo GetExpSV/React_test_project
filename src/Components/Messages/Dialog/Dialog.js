@@ -1,12 +1,31 @@
 import React from 'react';
 import dialog_class from './Dialog.module.css';
+import {Route} from "react-router-dom";
 
 const Dialog = (props) => {
-    let img = "https://lh3.googleusercontent.com/proxy/ClY_2H75jWuMv0iYJ3uMW5hMQTMXkXrOQuzdLoYpg6Vth74zjD_W71D0M0_iWz4A7pwqqusIis_knTQi0w6O5ubH3hrf4YK9YnrsYlu4knjUCXklqK4rZKQBIGHkhg"
+    let messageItem;
+    let img = "https://icons.iconarchive.com/icons/iynque/ios7-style/1024/Messages-icon.png"
+    if (props.id === 1) {
+        messageItem = () => <div className={dialog_class.messageLeft}>
+            <img src={img}/><span> - {props.message}</span>
+        </div>
+    }
+
+    if (props.id === 2) {
+        messageItem = () => <div className={dialog_class.messageRight}>
+            <span>{props.message} - </span> <img src={img}/>
+        </div>
+    }
+
+    let newMessage = React.createRef();
+
+    let newMessageAlert = () => {
+        let text = newMessage.current.value;
+        alert(text);
+    }
     return (
-        <div className={dialog_class.message}>
-                <img src={img}/>
-                <span className={dialog_class.item}>- {props.message}</span>
+        <div>
+            <Route render={messageItem}/>
         </div>
     );
 }

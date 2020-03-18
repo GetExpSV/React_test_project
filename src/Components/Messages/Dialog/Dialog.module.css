@@ -1,6 +1,26 @@
-.message img {
-     height: 15px;
-     width: 15px;
-     border-radius: 30px;
-     margin-right: 10px;
- }
+.messageLeft img {
+    height: 15px;
+    width: 15px;
+    border-radius: 30px;
+    margin-right: 10px;
+    transform: scale(-1, 1);
+}
+
+.messageRight img {
+    height: 15px;
+    width: 15px;
+    border-radius: 30px;
+    margin-right: 10px;
+}
+
+.messageLeft {
+    text-align: left;
+}
+
+.messageRight {
+    text-align: right;
+}
+
+.item {
+    background-color: darkorange;
+}
