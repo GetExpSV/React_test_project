@@ -1,4 +1,3 @@
-import {renderTree} from "../Render";
 
 let Data = {
     profilePage: {
@@ -41,6 +40,12 @@ export let addLikeToPost = (id) =>{
         if(data.id === id) data.likeCount++;
     })
     renderTree(Data);
+}
+
+let renderTree;
+
+export let subscribe = (observer) => {
+    renderTree = observer;
 }
 
 export default Data;
