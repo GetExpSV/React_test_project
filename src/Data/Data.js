@@ -3,7 +3,8 @@ import {renderTree} from "../Render";
 let Data = {
     profilePage: {
         postsData: [{id: 1, message: 'Post 1', likeCount: 5}, {id: 2, message: 'Post 2', likeCount: 3}],
-        personInfoData: [{id: 1, name: 'Vladislav', surname: 'Savinykh', birthday: '01.01.0000'}]
+        personInfoData: [{id: 1, name: 'Vladislav', surname: 'Savinykh', birthday: '01.01.0000'}],
+        newPost: ''
     },
     messagesPage: {
         dialogsData:[{id: 1, name: 'Vasya', image: 'https://c7.hotpng.com/preview/701/23/630/discord-avatar-twitch-youtube-profile.jpg'},
@@ -17,8 +18,16 @@ let Data = {
     }
 }
 
-export let addPost = (post) =>{
+export let newPostChange = (text) => {
+    Data.profilePage.newPost = text;
+    renderTree(Data);
+}
+
+export let addPost = () =>{
+    let postId = Data.profilePage.postsData[Data.profilePage.postsData.length-1].id + 1;
+    let post = {id: postId, message: Data.profilePage.newPost, likeCount: 0 }
     Data.profilePage.postsData.push(post);
+    Data.profilePage.newPost = '';
     renderTree(Data);
 }
 

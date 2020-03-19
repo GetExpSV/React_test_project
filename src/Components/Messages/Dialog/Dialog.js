@@ -17,12 +17,6 @@ const Dialog = (props) => {
         </div>
     }
 
-    let newMessage = React.createRef();
-
-    let newMessageAlert = () => {
-        let text = newMessage.current.value;
-        alert(text);
-    }
     return (
         <div>
             <Route render={messageItem}/>
