@@ -10,8 +10,12 @@ const Messages = (props) => {
 
     let newMessage = React.createRef();
 
+    let newMessageArea = () => {
+        props.newMessageChange(newMessage.current.value);
+    }
+
     let newMessageAlert = () =>{
-        let text = newMessage.current.value;
+        /*let text = newMessage.current.value;
         let messageId;
         if(props.data.messagesData[props.data.messagesData.length-1].id === 2){
             messageId = 1;
@@ -19,9 +23,9 @@ const Messages = (props) => {
         if(props.data.messagesData[props.data.messagesData.length-1].id ===1){
             messageId = 2;
         }
-        let message = {id: messageId, message: text};
-        props.addMessage(message);
-        newMessage.current.value = '';
+        let message = {id: messageId, message: text};*/
+        props.addMessage();
+        /*newMessage.current.value = '';*/
     }
     return (
         <div>
@@ -34,7 +38,7 @@ const Messages = (props) => {
                     {messagesArray}
                 </div>
                 <div className={messages_class.textItem}>
-                    <textarea ref={newMessage}></textarea>
+                    <textarea ref={newMessage} value={props.data.newMessage} onChange={newMessageArea}></textarea>
                     <button onClick={newMessageAlert}>Send</button>
                 </div>
             </div>
