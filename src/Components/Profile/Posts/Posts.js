@@ -4,16 +4,16 @@ import Post from './Post/Post'
 
 const Posts = (props) => {
     let image = "http://getdrawings.com/img/silhouette-avatar-12.png";
-    let posts = props.data.map(data => <Post id={data.id} image={image} message={data.message} likeCount={data.likeCount} addLikeToPost={props.addLikeToPost}/>);
+    let posts = props.data.map(data => <Post id={data.id} image={image} message={data.message} likeCount={data.likeCount} dispatch={props.dispatch}/>);
 
     let newPostArea = React.createRef();
 
     let addPost = () => {
-        props.addPost();
+        props.dispatch({type: 'ADD-POST'});
     }
 
     let postChange = () => {
-        props.newPostChange(newPostArea.current.value)
+        props.dispatch({type: 'NEW-POST-CHANGE', text: newPostArea.current.value});
     }
 
     return (<div className={posts_class.newPost}>New Post

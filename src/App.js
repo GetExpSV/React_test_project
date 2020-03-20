@@ -12,10 +12,8 @@ import Settings from './Components/Settings/Settings';
 
 
 const App = (props) => {
-    let profileComponent = () => <Profile data={props.data.profilePage} addPost={props.addPost}
-                                          addLikeToPost={props.addLikeToPost} newPostChange={props.newPostChange}/>;
-    let messagesComponent = () => <Messages data={props.data.messagesPage} addMessage={props.addMessage}
-                                            newMessageChange={props.newMessageChange}/>;
+    let profileComponent = () => <Profile data={props.data.profilePage} dispatch={props.dispatch}/>;
+    let messagesComponent = () => <Messages data={props.data.messagesPage} dispatch={props.dispatch}/>;
     return (
         <BrowserRouter>
             <div className="app-wrapper">

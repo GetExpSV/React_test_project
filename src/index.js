@@ -7,9 +7,7 @@ import App from "./App";
 
 
 let renderTree = (data) => {
-    ReactDOM.render(<App data={data} addPost={Data.addPost.bind(Data)} addMessage={Data.addMessage.bind(Data)}
-                         addLikeToPost={Data.addLikeToPost.bind(Data)}
-                         newPostChange={Data.newPostChange.bind(Data)} newMessageChange={Data.newMessageChange.bind(Data)}/>,
+    ReactDOM.render(<App data={data} dispatch={Data.dispatch.bind(Data)}/>,
         document.getElementById('root'));
 }
 
