@@ -2,6 +2,9 @@ import React from 'react';
 import messages_class from './Messages.module.css';
 import Dialog from './Dialog/Dialog'
 import DialogItem from "./DialogItem/DialogItem";
+import {addMessageActionCreator, newMessageChangeActionCreator} from "../../Data/Data";
+
+
 
 const Messages = (props) => {
 
@@ -11,11 +14,11 @@ const Messages = (props) => {
     let newMessage = React.createRef();
 
     let newMessageArea = () => {
-        props.dispatch({type: 'NEW-MESSAGE-CHANGE', message: newMessage.current.value})
+        props.dispatch(newMessageChangeActionCreator(newMessage.current.value));
     }
 
-    let newMessageAlert = () =>{
-        props.dispatch({type: 'ADD-MESSAGE'})
+    let addNewMessage = () =>{
+        props.dispatch(addMessageActionCreator())
     }
     return (
         <div>
@@ -29,7 +32,7 @@ const Messages = (props) => {
                 </div>
                 <div className={messages_class.textItem}>
                     <textarea ref={newMessage} value={props.data.newMessage} onChange={newMessageArea}></textarea>
-                    <button onClick={newMessageAlert}>Send</button>
+                    <button onClick={addNewMessage}>Send</button>
                 </div>
             </div>
         </div>

@@ -1,6 +1,7 @@
 import React from 'react'
 import posts_class from './Posts.module.css';
 import Post from './Post/Post'
+import {addPostActionCreator, newPostChangeActionCreator} from "../../../Data/Data";
 
 const Posts = (props) => {
     let image = "http://getdrawings.com/img/silhouette-avatar-12.png";
@@ -9,11 +10,11 @@ const Posts = (props) => {
     let newPostArea = React.createRef();
 
     let addPost = () => {
-        props.dispatch({type: 'ADD-POST'});
+        props.dispatch(addPostActionCreator());
     }
 
     let postChange = () => {
-        props.dispatch({type: 'NEW-POST-CHANGE', text: newPostArea.current.value});
+        props.dispatch(newPostChangeActionCreator(newPostArea.current.value));
     }
 
     return (<div className={posts_class.newPost}>New Post

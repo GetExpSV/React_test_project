@@ -1,9 +1,10 @@
 import React from 'react';
 import post_class from './Post.module.css';
+import {addLikeToPostActionCreator} from "../../../../Data/Data";
 
 const Post = (props) => {
     let addLike = () => {
-        props.dispatch({type: 'ADD-LIKE-TO-POST', id:props.id});
+        props.dispatch(addLikeToPostActionCreator(props.id));
     }
     return (
         <div>
