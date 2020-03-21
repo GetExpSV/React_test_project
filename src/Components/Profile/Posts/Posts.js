@@ -7,19 +7,17 @@ const Posts = (props) => {
     let image = "http://getdrawings.com/img/silhouette-avatar-12.png";
     let posts = props.data.map(data => <Post id={data.id} image={image} message={data.message} likeCount={data.likeCount} dispatch={props.dispatch}/>);
 
-    let newPostArea = React.createRef();
-
     let addPost = () => {
         props.dispatch(addPostActionCreator());
     }
 
-    let postChange = () => {
-        props.dispatch(newPostChangeActionCreator(newPostArea.current.value));
+    let postChange = (e) => {
+        props.dispatch(newPostChangeActionCreator(e.target.value));
     }
 
     return (<div className={posts_class.newPost}>New Post
         <div>
-            <textarea ref={newPostArea} value={props.newPost} onChange={postChange}></textarea>
+            <textarea value={props.newPost} onChange={postChange}></textarea>
             <button onClick={addPost}>Add post</button>
         </div>
         <div><h2 className={posts_class.posts}>Posts</h2>

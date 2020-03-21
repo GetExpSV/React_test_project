@@ -11,10 +11,9 @@ const Messages = (props) => {
     let dialogsArray = props.data.dialogsData.map(data => <DialogItem name={data.name} id={data.id} image={data.image}/>);
     let messagesArray = props.data.messagesData.map(data => <Dialog message={data.message} id={data.id}/>);
 
-    let newMessage = React.createRef();
 
-    let newMessageArea = () => {
-        props.dispatch(newMessageChangeActionCreator(newMessage.current.value));
+    let newMessageArea = (e) => {
+        props.dispatch(newMessageChangeActionCreator(e.target.value));
     }
 
     let addNewMessage = () =>{
@@ -31,7 +30,7 @@ const Messages = (props) => {
                     {messagesArray}
                 </div>
                 <div className={messages_class.textItem}>
-                    <textarea ref={newMessage} value={props.data.newMessage} onChange={newMessageArea}></textarea>
+                    <textarea value={props.data.newMessage} onChange={newMessageArea}></textarea>
                     <button onClick={addNewMessage}>Send</button>
                 </div>
             </div>
