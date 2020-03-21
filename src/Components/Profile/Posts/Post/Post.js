@@ -1,6 +1,6 @@
 import React from 'react';
 import post_class from './Post.module.css';
-import {addLikeToPostActionCreator} from "../../../../Data/Data";
+import {addLikeToPostActionCreator} from "../../../../Data/ProfileReducer";
 
 const Post = (props) => {
     let addLike = () => {

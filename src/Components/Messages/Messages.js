@@ -2,7 +2,7 @@ import React from 'react';
 import messages_class from './Messages.module.css';
 import Dialog from './Dialog/Dialog'
 import DialogItem from "./DialogItem/DialogItem";
-import {addMessageActionCreator, newMessageChangeActionCreator} from "../../Data/Data";
+import {addMessageActionCreator, newMessageChangeActionCreator} from "../../Data/MessagesReducer";
 
 
 

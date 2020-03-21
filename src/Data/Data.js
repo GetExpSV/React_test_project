@@ -1,3 +1,6 @@
+import profileReducer from "./ProfileReducer";
+import messagesReducer from "./MessagesReducer";
+
 let Data = {
     _Data: {
         profilePage: {
@@ -68,56 +71,11 @@ let Data = {
     },
 
     dispatch(action){
-        if(action.type === addPostType){
-            let postId = this._Data.profilePage.postsData[this._Data.profilePage.postsData.length -1].id +1;
-            let post = {id: postId, message: this._Data.profilePage.newPost, likeCount: 0};
-            this._Data.profilePage.postsData.push(post);
-            this._Data.profilePage.newPost = '';
-            this._callSubscriber(this._Data);
-        }
-        else if(action.type === newPostChangeType){
-            this._Data.profilePage.newPost = action.text;
-            this._callSubscriber(this._Data);
-        }
-        else if(action.type === addLikeToPostType){
-            this._Data.profilePage.postsData.find(data=> data.id === action.id).likeCount++;
-            this._callSubscriber(this._Data);
-        }
-        else if(action.type === newMessageChangeType){
-            this._Data.messagesPage.newMessage = action.message;
-            this._callSubscriber(this._Data);
-        }
-        else if(action.type === addMessageType){
-            let messageId;
-            if(this._Data.messagesPage.messagesData[this._Data.messagesPage.messagesData.length-1].id === 2){
-                messageId = 1;
-            }
-            if(this._Data.messagesPage.messagesData[this._Data.messagesPage.messagesData.length-1].id ===1){
-                messageId = 2;
-            }
-            let message = {id: messageId, message: this._Data.messagesPage.newMessage };
-            this._Data.messagesPage.messagesData.push(message);
-            this._Data.messagesPage.newMessage = '';
-            this._callSubscriber(this._Data);
-        }
+        this._Data.profilePage = profileReducer(this._Data.profilePage, action);
+        this._Data.messagesPage = messagesReducer(this._Data.messagesPage, action);
+        this._callSubscriber(this._Data);
     }
 
 }
-
-const newPostChangeType = 'NEW-POST-CHANGE';
-const addPostType = 'ADD-POST';
-
-const newMessageChangeType = 'NEW-MESSAGE-CHANGE';
-const addMessageType = 'ADD-MESSAGE';
-
-const addLikeToPostType = 'ADD-LIKE-TO-POST';
-
-export const newPostChangeActionCreator = (text) => { return {type: newPostChangeType, text: text}};
-export const addPostActionCreator = () => {return {type: addPostType}};
-
-export const newMessageChangeActionCreator = (text) => {return {type: newMessageChangeType, message: text}};
-export const addMessageActionCreator = () => {return {type: addMessageType}};
-
-export const addLikeToPostActionCreator = (id) => {return {type: addLikeToPostType, id: id}};
 
 export default Data;

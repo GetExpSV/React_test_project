@@ -1,7 +1,7 @@
 import React from 'react'
 import posts_class from './Posts.module.css';
 import Post from './Post/Post'
-import {addPostActionCreator, newPostChangeActionCreator} from "../../../Data/Data";
+import {addPostActionCreator, newPostChangeActionCreator} from "../../../Data/ProfileReducer";
 
 const Posts = (props) => {
     let image = "http://getdrawings.com/img/silhouette-avatar-12.png";
