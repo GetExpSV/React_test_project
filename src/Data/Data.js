@@ -26,7 +26,7 @@ let Data = {
     },
 
     //#region func
-    /*newPostChange(text){
+    newPostChange(text){
         this._Data.profilePage.newPost = text;
         this._callSubscriber(this._Data);
     },
@@ -37,14 +37,14 @@ let Data = {
         this._Data.profilePage.postsData.push(post);
         this._Data.profilePage.newPost = '';
         this._callSubscriber(this._Data);
-    },*/
+    },
 
-    /*newMessageChange(text){
+    newMessageChange(text){
         this._Data.messagesPage.newMessage = text;
         this._callSubscriber(this._Data);
-    },*/
+    },
 
-    /*addMessage(){
+    addMessage(){
         let messageId;
         if(this._Data.messagesPage.messagesData[this._Data.messagesPage.messagesData.length-1].id === 2){
             messageId = 1;
@@ -56,12 +56,12 @@ let Data = {
         this._Data.messagesPage.messagesData.push(message);
         this._Data.messagesPage.newMessage = '';
         this._callSubscriber(this._Data);
-    },*/
+    },
 
-    /*addLikeToPost(id){
+    addLikeToPost(id){
         this._Data.profilePage.postsData.find(data=> data.id === id).likeCount++;
         this._callSubscriber(this._Data);
-    },*/
+    },
     //#endregion
 
     _callSubscriber(){},

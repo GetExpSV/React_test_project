@@ -5,7 +5,7 @@ import {addPostActionCreator, newPostChangeActionCreator} from "../../../Data/Pr
 
 const Posts = (props) => {
     let image = "http://getdrawings.com/img/silhouette-avatar-12.png";
-    let posts = props.data.map(data => <Post id={data.id} image={image} message={data.message} likeCount={data.likeCount} dispatch={props.dispatch}/>);
+    let posts = props.state.map(data => <Post id={data.id} image={image} message={data.message} likeCount={data.likeCount} dispatch={props.dispatch}/>);
 
     let addPost = () => {
         props.dispatch(addPostActionCreator());

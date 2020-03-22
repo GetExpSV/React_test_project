@@ -2,7 +2,13 @@ const newPostChangeType = 'NEW-POST-CHANGE';
 const addPostType = 'ADD-POST';
 const addLikeToPostType = 'ADD-LIKE-TO-POST';
 
-let profileReducer = (state, action) => {
+let initialProfile = {
+    postsData: [{id: 1, message: 'Post 1', likeCount: 5}, {id: 2, message: 'Post 2', likeCount: 3}],
+    personInfoData: [{id: 1, name: 'Vladislav', surname: 'Savinykh', birthday: '01.01.0000'}],
+    newPost: ''
+};
+
+let profileReducer = (state= initialProfile, action) => {
     switch(action.type){
         case newPostChangeType:
             state.newPost = action.text;
