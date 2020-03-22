@@ -1,18 +1,17 @@
 import React from 'react'
 import posts_class from './Posts.module.css';
-import Post from './Post/Post'
-import {addPostActionCreator, newPostChangeActionCreator} from "../../../Data/ProfileReducer";
+import PostContainer from "./Post/PostContainer";
 
 const Posts = (props) => {
     let image = "http://getdrawings.com/img/silhouette-avatar-12.png";
-    let posts = props.state.map(data => <Post id={data.id} image={image} message={data.message} likeCount={data.likeCount} dispatch={props.dispatch}/>);
+    let posts = props.state.map(data => <PostContainer id={data.id} image={image} message={data.message} likeCount={data.likeCount} store={props.store}/>);
 
     let addPost = () => {
-        props.dispatch(addPostActionCreator());
+        props.addNewPost();
     }
 
     let postChange = (e) => {
-        props.dispatch(newPostChangeActionCreator(e.target.value));
+        props.onChangeNewPost(e.target.value);
     }
 
     return (<div className={posts_class.newPost}>New Post

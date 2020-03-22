@@ -1,24 +1,24 @@
 import React from 'react';
 import './App.css';
 import Header from "./Components/Header/Header";
-import Navbar from "./Components/Navbar/Navbar";
-import Profile from "./Components/Profile/Profile";
 import Footer from "./Components/Footer/Footer";
-import Messages from "./Components/Messages/Messages";
 import News from './Components/News/News';
 import {BrowserRouter, Route} from 'react-router-dom';
 import Music from './Components/Music/Music';
 import Settings from './Components/Settings/Settings';
+import ProfileContainer from "./Components/Profile/ProfileContainer";
+import NavbarContainer from "./Components/Navbar/NavbarContainer";
+import MessagesContainer from "./Components/Messages/MessagesContainer";
 
 
 const App = (props) => {
-    let profileComponent = () => <Profile state={props.state.profilePage} dispatch={props.dispatch}/>;
-    let messagesComponent = () => <Messages state={props.state.messagesPage} dispatch={props.dispatch}/>;
+    let profileComponent = () => <ProfileContainer store={props.store}/>;
+    let messagesComponent = () => <MessagesContainer store={props.store}/>;
     return (
         <BrowserRouter>
             <div className="app-wrapper">
                 <Header/>
-                <Navbar friends={props.state.messagesPage}/>
+                <NavbarContainer store={props.store}/>
                 <div className="app-wrapper-content">
                     <Route exact path="/" render={profileComponent}/>
                     <Route path="/profile" render={profileComponent}/>

@@ -7,17 +7,14 @@ import ReactDOM from "react-dom";
 import App from "./App";
 
 
-let renderTree = (state) => {
-    ReactDOM.render(<App state={state} dispatch={store.dispatch.bind(store)}/>,
+let renderTree = () => {
+    ReactDOM.render(<App store={store}/>,
         document.getElementById('root'));
 }
 
-renderTree(store.getState());
+renderTree();
 
-store.subscribe( () => {
-    let state = store.getState();
-    renderTree(state);
-});
+store.subscribe(renderTree);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
