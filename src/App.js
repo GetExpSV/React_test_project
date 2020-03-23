@@ -12,13 +12,13 @@ import MessagesContainer from "./Components/Messages/MessagesContainer";
 
 
 const App = (props) => {
-    let profileComponent = () => <ProfileContainer store={props.store}/>;
-    let messagesComponent = () => <MessagesContainer store={props.store}/>;
+    let profileComponent = () => <ProfileContainer /*store={props.store}*//>;
+    let messagesComponent = () => <MessagesContainer /*store={props.store}*//>;
     return (
         <BrowserRouter>
             <div className="app-wrapper">
                 <Header/>
-                <NavbarContainer store={props.store}/>
+                <NavbarContainer/* store={props.store}*//>
                 <div className="app-wrapper-content">
                     <Route exact path="/" render={profileComponent}/>
                     <Route path="/profile" render={profileComponent}/>
