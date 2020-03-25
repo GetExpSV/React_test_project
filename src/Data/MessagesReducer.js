@@ -16,9 +16,12 @@ let initialMessage = {
 let messagesReducer = (state = initialMessage, action) => {
     switch(action.type){
         case newMessageChangeType:
-            let newMessageState = {...state};
-            newMessageState.newMessage = action.message;
-            return newMessageState;
+            /*let newMessageState = {...state};
+            newMessageState.newMessage = action.message;*/
+            return {
+                ...state,
+                newMessage: action.message
+            }
         case addMessageType:
             let messageId;
             if(state.messagesData[state.messagesData.length-1].id === 2){
@@ -28,11 +31,15 @@ let messagesReducer = (state = initialMessage, action) => {
                 messageId = 2;
             }
             let message = {id: messageId, message: state.newMessage };
-            let newMessageDataState = {...state};
+            /*let newMessageDataState = {...state};
             newMessageDataState.messagesData = [...state.messagesData]
             newMessageDataState.messagesData.push(message);
-            newMessageDataState.newMessage = '';
-            return newMessageDataState;
+            newMessageDataState.newMessage = '';*/
+            return{
+                ...state,
+                messagesData: [...state.messagesData, message],
+                newMessage: ''
+            }
         default: return state;
     }
 }

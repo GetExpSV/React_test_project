@@ -9,7 +9,7 @@ const ProfileInfo = (props) => {
     let headerImg = "https://p.bigstockphoto.com/GeFvQkBbSLaMdpKXF1Zv_bigstock-Aerial-View-Of-Blue-Lakes-And--227291596.jpg";
 
     let personInfo = props.personInfo.map(data => <PersonInfo name={data.name} surname={data.surname}
-                                                            birthDay={data.birthday}/>)
+                                                            birthDay={data.birthday} key={data.id}/>)
     return (
         <div>
             <HeaderImg img={headerImg}/>
