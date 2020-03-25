@@ -11,16 +11,21 @@ let initialProfile = {
 let profileReducer = (state= initialProfile, action) => {
     switch(action.type){
         case newPostChangeType:
-            state.newPost = action.text;
-            return state;
+            let newPostState = {...state};
+            newPostState.newPost = action.text;
+            return newPostState;
         case addPostType:
-            let postId = state.postsData[state.postsData.length -1].id + 1;
-            state.postsData.push({id: postId, message: state.newPost, likeCount: 0});
-            state.newPost = '';
-            return state;
+            let newPostDataState = {...state};
+            newPostDataState.postsData = [...state.postsData];
+            let postId = newPostDataState.postsData[newPostDataState.postsData.length -1].id + 1;
+            newPostDataState.postsData.push({id: postId, message: newPostDataState.newPost, likeCount: 0});
+            newPostDataState.newPost = '';
+            return newPostDataState;
         case addLikeToPostType:
-            state.postsData.find(data=> data.id === action.id).likeCount++;
-            return state;
+            let newPostLike = {...state};
+            newPostLike.postsData = [...state.postsData];
+            newPostLike.postsData.find(data=> data.id === action.id).likeCount++;
+            return newPostLike;
         default: return state;
     }
 
