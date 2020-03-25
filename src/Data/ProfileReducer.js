@@ -27,7 +27,9 @@ let profileReducer = (state= initialProfile, action) => {
             return {
                 ...state,
                 postsData: state.postsData.map(data=> {
-                    if(data.id === action.id) data.likeCount++
+                    if(data.id === action.id) {
+                        return{...data, likeCount: ++data.likeCount}
+                    }
                     return data;
                 })
             }

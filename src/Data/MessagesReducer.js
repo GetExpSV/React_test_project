@@ -16,8 +16,6 @@ let initialMessage = {
 let messagesReducer = (state = initialMessage, action) => {
     switch(action.type){
         case newMessageChangeType:
-            /*let newMessageState = {...state};
-            newMessageState.newMessage = action.message;*/
             return {
                 ...state,
                 newMessage: action.message
@@ -31,10 +29,6 @@ let messagesReducer = (state = initialMessage, action) => {
                 messageId = 2;
             }
             let message = {id: messageId, message: state.newMessage };
-            /*let newMessageDataState = {...state};
-            newMessageDataState.messagesData = [...state.messagesData]
-            newMessageDataState.messagesData.push(message);
-            newMessageDataState.newMessage = '';*/
             return{
                 ...state,
                 messagesData: [...state.messagesData, message],

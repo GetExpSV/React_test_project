@@ -9,23 +9,26 @@ import Settings from './Components/Settings/Settings';
 import ProfileContainer from "./Components/Profile/ProfileContainer";
 import NavbarContainer from "./Components/Navbar/NavbarContainer";
 import MessagesContainer from "./Components/Messages/MessagesContainer";
+import UsersContainer from "./Components/Users/UsersContainer";
 
 
 const App = (props) => {
-    let profileComponent = () => <ProfileContainer />;
-    let messagesComponent = () => <MessagesContainer />;
+    let profileContainer = () => <ProfileContainer />;
+    let messagesContainer = () => <MessagesContainer />;
+    let usersContainer = () => <UsersContainer/>
     return (
         <BrowserRouter>
             <div className="app-wrapper">
                 <Header/>
                 <NavbarContainer/>
                 <div className="app-wrapper-content">
-                    <Route exact path="/" render={profileComponent}/>
-                    <Route path="/profile" render={profileComponent}/>
-                    <Route path="/messages" render={messagesComponent}/>
+                    <Route exact path="/" render={profileContainer}/>
+                    <Route path="/profile" render={profileContainer}/>
+                    <Route path="/messages" render={messagesContainer}/>
                     <Route path="/news" component={News}/>
                     <Route path="/music" component={Music}/>
                     <Route path="/settings" component={Settings}/>
+                    <Route path="/users" render={usersContainer}/>
                 </div>
                 <Footer/>
             </div>
