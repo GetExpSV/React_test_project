@@ -2,10 +2,10 @@ import React from 'react';
 
 let followType = 'FOLLOW';
 let unfollowType = 'UNFOLLOW';
+let newUsers = 'ADD-USERS'
 
 let initialUsers = {
-    users: [{id: 1, photoUrl: 'https://c7.hotpng.com/preview/406/211/692/5bd7bf9d2fae5.jpg', follow: true, fullName: 'Vladislav', status: "Hi everyone", location: {country: 'Ukrain', city: 'Kiev'}},
-        {id: 2, photoUrl: 'https://sun9-57.userapi.com/c846122/v846122563/747dd/1B2WtilFklE.jpg?ava=1', follow: false, fullName: 'Sam', status: "Hi everyone more", location: {country: 'Russia', city: 'Moscow'}}]
+    users: []
 }
 
 let UsersReducer = (state = initialUsers, action) => {
@@ -15,7 +15,7 @@ let UsersReducer = (state = initialUsers, action) => {
                 ...state,
                 users: state.users.map(data=> {
                     if(data.id === action.id){
-                        return{...data, follow: true};
+                        return{...data, followed: true};
                     }
                     return data;
                 })
@@ -25,10 +25,15 @@ let UsersReducer = (state = initialUsers, action) => {
                 ...state,
                 users: state.users.map(data=>{
                     if(data.id === action.id){
-                        return{...data, follow: false}
+                        return{...data, followed: false}
                     }
                     return data;
                 })
+            }
+        case newUsers:
+            return{
+                ...state,
+                users: [...action.users]
             }
         default: return state;
     }
@@ -40,6 +45,10 @@ export let followAC = (id) => {
 
 export let unfollowAC = (id) => {
     return{type: unfollowType, id: id}
+}
+
+export let setUsers = (users) => {
+    return{type: newUsers, users: users}
 }
 
 export default UsersReducer;
