@@ -2,10 +2,15 @@ import React from 'react';
 
 let followType = 'FOLLOW';
 let unfollowType = 'UNFOLLOW';
-let newUsers = 'ADD-USERS'
+let newUsers = 'ADD-USERS';
+let setTotalCount = 'SET-TOTAL-COUNT';
+let setCurrentPage = 'SET-CURRENT-PAGE';
 
 let initialUsers = {
-    users: []
+    users: [],
+    pageSize: 25,
+    totalCount: 23,
+    currentPage: 1
 }
 
 let UsersReducer = (state = initialUsers, action) => {
@@ -35,6 +40,16 @@ let UsersReducer = (state = initialUsers, action) => {
                 ...state,
                 users: [...action.users]
             }
+        case setTotalCount:
+            return{
+                ...state,
+                totalCount: action.totalCount
+            }
+        case setCurrentPage:
+            return{
+                ...state,
+                currentPage: action.currentPage
+            }
         default: return state;
     }
 }
@@ -49,6 +64,14 @@ export let unfollowAC = (id) => {
 
 export let setUsers = (users) => {
     return{type: newUsers, users: users}
+}
+
+export let setTotalCountAc = (totalCount) => {
+    return{type:setTotalCount ,totalCount}
+}
+
+export let setCurrentPageAc = (currentPage) => {
+    return{type:setCurrentPage, currentPage}
 }
 
 export default UsersReducer;
