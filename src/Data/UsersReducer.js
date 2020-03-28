@@ -5,12 +5,14 @@ let unfollowType = 'UNFOLLOW';
 let newUsers = 'ADD-USERS';
 let setTotalCount = 'SET-TOTAL-COUNT';
 let setCurrentPage = 'SET-CURRENT-PAGE';
+let setLoading = 'SET-LOADING';
 
 let initialUsers = {
     users: [],
     pageSize: 25,
     totalCount: 23,
-    currentPage: 1
+    currentPage: 1,
+    isLoading: false
 }
 
 let UsersReducer = (state = initialUsers, action) => {
@@ -50,6 +52,12 @@ let UsersReducer = (state = initialUsers, action) => {
                 ...state,
                 currentPage: action.currentPage
             }
+        case setLoading:
+            return{
+                ...state,
+                isLoading: action.loading
+            }
+
         default: return state;
     }
 }
@@ -72,6 +80,10 @@ export let setTotalCountAc = (totalCount) => {
 
 export let setCurrentPageAc = (currentPage) => {
     return{type:setCurrentPage, currentPage}
+}
+
+export let setLoadingAc = (loading) => {
+    return{type: setLoading, loading}
 }
 
 export default UsersReducer;
