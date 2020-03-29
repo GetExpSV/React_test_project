@@ -3,9 +3,9 @@ import React from 'react';
 let followType = 'FOLLOW';
 let unfollowType = 'UNFOLLOW';
 let newUsers = 'ADD-USERS';
-let setTotalCount = 'SET-TOTAL-COUNT';
-let setCurrentPage = 'SET-CURRENT-PAGE';
-let setLoading = 'SET-LOADING';
+let setTotalUsersCount = 'SET-TOTAL-COUNT';
+let setCurrentPageType = 'SET-CURRENT-PAGE';
+let setLoadingType = 'SET-LOADING';
 
 let initialUsers = {
     users: [],
@@ -42,17 +42,17 @@ let UsersReducer = (state = initialUsers, action) => {
                 ...state,
                 users: [...action.users]
             }
-        case setTotalCount:
+        case setTotalUsersCount:
             return{
                 ...state,
                 totalCount: action.totalCount
             }
-        case setCurrentPage:
+        case setCurrentPageType:
             return{
                 ...state,
                 currentPage: action.currentPage
             }
-        case setLoading:
+        case setLoadingType:
             return{
                 ...state,
                 isLoading: action.loading
@@ -62,11 +62,11 @@ let UsersReducer = (state = initialUsers, action) => {
     }
 }
 
-export let followAC = (id) => {
+export let follow = (id) => {
     return{type: followType, id: id}
 }
 
-export let unfollowAC = (id) => {
+export let unfollow = (id) => {
     return{type: unfollowType, id: id}
 }
 
@@ -74,16 +74,16 @@ export let setUsers = (users) => {
     return{type: newUsers, users: users}
 }
 
-export let setTotalCountAc = (totalCount) => {
-    return{type:setTotalCount ,totalCount}
+export let setTotalCount = (totalCount) => {
+    return{type:setTotalUsersCount ,totalCount}
 }
 
-export let setCurrentPageAc = (currentPage) => {
-    return{type:setCurrentPage, currentPage}
+export let setCurrentPage = (currentPage) => {
+    return{type:setCurrentPageType, currentPage}
 }
 
-export let setLoadingAc = (loading) => {
-    return{type: setLoading, loading}
+export let setLoading = (loading) => {
+    return{type: setLoadingType, loading}
 }
 
 export default UsersReducer;

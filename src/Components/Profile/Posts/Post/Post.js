@@ -3,7 +3,7 @@ import post_class from './Post.module.css';
 
 const Post = (props) => {
     let addLike = () => {
-        props.addLike(props.id);
+        props.addLikeToPost(props.id);
     }
     return (
         <div>

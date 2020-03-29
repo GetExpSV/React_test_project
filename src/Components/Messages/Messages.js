@@ -12,7 +12,7 @@ const Messages = (props) => {
 
 
     let newMessageChanges = (e) => {
-        props.messageChange(e.target.value);
+        props.newMessageChange(e.target.value);
     }
 
     let addNewMessage = () =>{

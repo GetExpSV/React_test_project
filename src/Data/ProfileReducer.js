@@ -38,8 +38,8 @@ let profileReducer = (state= initialProfile, action) => {
 
 }
 
-export const newPostChangeActionCreator = (text) => { return {type: newPostChangeType, text: text}};
-export const addPostActionCreator = () => {return {type: addPostType}};
-export const addLikeToPostActionCreator = (id) => {return {type: addLikeToPostType, id: id}};
+export const newPostChange = (text) => { return {type: newPostChangeType, text: text}};
+export const addPost = () => {return {type: addPostType}};
+export const addLikeToPost = (id) => {return {type: addLikeToPostType, id: id}};
 
 export default profileReducer;

@@ -9,11 +9,11 @@ const Posts = (props) => {
                                                            likeCount={data.likeCount} key={data.id}/>);
 
     let addPost = () => {
-        props.addNewPost();
+        props.addPost();
     }
 
     let postChange = (e) => {
-        props.onChangeNewPost(e.target.value);
+        props.newPostChange(e.target.value);
     }
 
     return (<div className={posts_class.newPost}>New Post

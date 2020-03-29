@@ -14,10 +14,10 @@ class User extends React.Component{
                     <div className={user_class.itemBottom}>
                         {this.props.follow ?
                             <button onClick={() => {
-                                this.props.unfollowUser(this.props.id)
+                                this.props.unfollow(this.props.id)
                             }}>Unfollow</button> :
                             <button onClick={() => {
-                                this.props.followUser(this.props.id)
+                                this.props.follow(this.props.id)
                             }}>Follow</button>}
                     </div>
                 </div>

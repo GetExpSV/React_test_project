@@ -1,6 +1,6 @@
 import React from 'react';
 import Post from "./Post";
-import {addLikeToPostActionCreator} from "../../../../Data/ProfileReducer";
+import {addLikeToPost} from "../../../../Data/ProfileReducer";
 import {connect} from "react-redux";
 
 
@@ -13,14 +13,14 @@ let mapStateToProps = (state, {id, image, message, likeCount}) => {
     }
 }
 
-let mapDispatchToProps = (dispatch) => {
+/*let mapDispatchToProps = (dispatch) => {
     return{
         addLike: (id) => {
             dispatch(addLikeToPostActionCreator(id))
         }
     }
-}
+}*/
 
-let PostContainer = connect(mapStateToProps, mapDispatchToProps)(Post);
+let PostContainer = connect(mapStateToProps, {addLikeToPost})(Post);
 
 export default PostContainer;
