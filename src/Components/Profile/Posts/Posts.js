@@ -3,7 +3,6 @@ import posts_class from './Posts.module.css';
 import PostContainer from "./Post/PostContainer";
 
 const Posts = (props) => {
-    debugger;
     let image = "http://getdrawings.com/img/silhouette-avatar-12.png";
     let posts = props.postsData.map(data => <PostContainer id={data.id} image={image} message={data.message}
                                                            likeCount={data.likeCount} key={data.id}/>);

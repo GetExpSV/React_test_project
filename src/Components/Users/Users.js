@@ -44,7 +44,7 @@ class Users extends React.Component{
             </div>)
         })
 
-        let usersArray = this.props.users.map(data => <UserContainer key={data.id} id={data.id} follow={data.followed}
+        let usersArray = this.props.users.map(data => <UserContainer key={data.id} id={data.id} followed={data.followed}
                                                             fullName={data.name}
                                                             status={data.status} country={"data.location.country"}
                                                             city={"data.location.city"}

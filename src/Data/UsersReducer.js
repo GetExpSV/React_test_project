@@ -40,7 +40,7 @@ let UsersReducer = (state = initialUsers, action) => {
         case newUsers:
             return{
                 ...state,
-                users: [...action.users]
+                users: action.users
             }
         case setTotalUsersCount:
             return{

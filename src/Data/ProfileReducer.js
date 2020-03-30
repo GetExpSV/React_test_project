@@ -1,11 +1,13 @@
 const newPostChangeType = 'NEW-POST-CHANGE';
 const addPostType = 'ADD-POST';
 const addLikeToPostType = 'ADD-LIKE-TO-POST';
+const setprofileInfoType = 'SET-PERSON-INFO';
 
 let initialProfile = {
     postsData: [{id: 1, message: 'Post 1', likeCount: 5}, {id: 2, message: 'Post 2', likeCount: 3}],
-    personInfoData: [{id: 1, name: 'Vladislav', surname: 'Savinykh', birthday: '01.01.0000'}],
-    newPost: ''
+    profileInfoData: [{id: 1, name: 'Vladislav', surname: 'Savinykh', birthday: '01.01.0000'}],
+    newPost: '',
+    profileInfo: null
 };
 
 let profileReducer = (state= initialProfile, action) => {
@@ -33,6 +35,11 @@ let profileReducer = (state= initialProfile, action) => {
                     return data;
                 })
             }
+        case setprofileInfoType:
+            return{
+                ...state,
+                profileInfo: action.profileInfo
+        }
         default: return state;
     }
 
@@ -41,5 +48,6 @@ let profileReducer = (state= initialProfile, action) => {
 export const newPostChange = (text) => { return {type: newPostChangeType, text: text}};
 export const addPost = () => {return {type: addPostType}};
 export const addLikeToPost = (id) => {return {type: addLikeToPostType, id: id}};
+export const setprofileInfo = (profileInfo) => {return{type: setprofileInfoType, profileInfo}}
 
 export default profileReducer;

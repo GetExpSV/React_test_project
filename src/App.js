@@ -23,7 +23,7 @@ const App = (props) => {
                 <NavbarContainer/>
                 <div className="app-wrapper-content">
                     <Route exact path="/" render={profileContainer}/>
-                    <Route path="/profile" render={profileContainer}/>
+                    <Route path="/profile/:userId?" render={profileContainer}/>
                     <Route path="/messages" render={messagesContainer}/>
                     <Route path="/news" component={News}/>
                     <Route path="/music" component={Music}/>

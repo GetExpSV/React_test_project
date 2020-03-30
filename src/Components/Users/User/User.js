@@ -1,6 +1,7 @@
 import React from 'react';
 import user_class from './User.module.css';
 import photo from '../../../Images/users.png'
+import {NavLink} from "react-router-dom";
 
 
 class User extends React.Component{
@@ -9,10 +10,12 @@ class User extends React.Component{
             <div className={user_class.container}>
                 <div className={user_class.leftArea}>
                     <div>
+                        <NavLink to={`/profile/${this.props.id}`}>
                         <img src={this.props.photoUrl.small != null? this.props.photoUrl.small : photo}/>
+                        </NavLink>
                     </div>
                     <div className={user_class.itemBottom}>
-                        {this.props.follow ?
+                        {this.props.followed ?
                             <button onClick={() => {
                                 this.props.unfollow(this.props.id)
                             }}>Unfollow</button> :
