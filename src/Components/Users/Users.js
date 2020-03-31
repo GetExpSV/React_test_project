@@ -11,7 +11,7 @@ class Users extends React.Component{
 
     componentDidMount() {
         this.props.setLoading(true);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then(response =>
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`, {withCredentials: true}).then(response =>
         {
             this.props.setLoading(false);
             this.props.setUsers(response.data.items);
@@ -22,7 +22,7 @@ class Users extends React.Component{
     onChangeCurrentPage = (page) => {
         this.props.setLoading(true);
         this.props.setCurrentPage(page);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${this.props.pageSize}`).then(response=>{
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${this.props.pageSize}`, {withCredentials: true}).then(response=>{
             this.props.setUsers(response.data.items);
             this.props.setLoading(false);
         })

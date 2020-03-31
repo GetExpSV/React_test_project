@@ -25,7 +25,6 @@ class ProfileInfoContainer extends React.Component {
     }
 
     render(){
-        debugger;
         if(!this.props.profileInfo){
             return(<Loader/>)
         }

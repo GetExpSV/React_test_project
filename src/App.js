@@ -10,6 +10,7 @@ import ProfileContainer from "./Components/Profile/ProfileContainer";
 import NavbarContainer from "./Components/Navbar/NavbarContainer";
 import MessagesContainer from "./Components/Messages/MessagesContainer";
 import UsersContainer from "./Components/Users/UsersContainer";
+import HeaderContainer from "./Components/Header/HeaderContainer";
 
 
 const App = (props) => {
@@ -19,7 +20,7 @@ const App = (props) => {
     return (
         <BrowserRouter>
             <div className="app-wrapper">
-                <Header/>
+                <HeaderContainer/>
                 <NavbarContainer/>
                 <div className="app-wrapper-content">
                     <Route exact path="/" render={profileContainer}/>

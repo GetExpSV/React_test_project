@@ -9,3 +9,21 @@
     grid-area: header;
     background-color: cadetblue;
 }
+
+.authItem{
+    float: right;
+    margin-top: 10px;
+    display: block;
+    line-height: 35px;
+}
+
+.authItem a{
+    text-decoration: none;
+    color: #282c34;
+}
+
+.Item{
+    display: block;
+    float: right;
+    margin-right: 10px;
+}
