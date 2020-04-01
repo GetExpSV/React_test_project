@@ -3,6 +3,7 @@ import user_class from './User.module.css';
 import photo from '../../../Images/users.png'
 import {NavLink} from "react-router-dom";
 import * as axios from "axios";
+import {UsersApi} from "../../../Api/UsersApi";
 
 
 class User extends React.Component{
@@ -16,21 +17,20 @@ class User extends React.Component{
                         </NavLink>
                     </div>
                     <div className={user_class.itemBottom}>
-                        {this.props.followed ?<button onClick={() => {
-                            axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${this.props.id}`,
-                                {withCredentials:true, headers: {'API-KEY': `3dd39951-4548-4dbf-a3e5-5f07ea7a0d32`}})
-                                .then(response => {
+                        {this.props.followed ? <button disabled={this.props.followingProgress.some(id=> id=== this.props.id)} onClick={() => {
+                            this.props.setFollowing(true, this.props.id);
+                            UsersApi.deleteFollow(this.props.id).then(response => {
                                     if(response.data.resultCode === 0){
                                         this.props.unfollow(this.props.id)
+                                        this.props.setFollowing(false, this.props.id);
                                     }
                                 })
-                        }}>Unfollow</button> :
-                            <button onClick={() => {
-                                axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${this.props.id}`, {},
-                                    {withCredentials:true, headers: {'API-KEY': `3dd39951-4548-4dbf-a3e5-5f07ea7a0d32`}})
-                            .then(response=>{
+                        }}>Unfollow</button> : <button disabled={this.props.followingProgress.some(id=> id=== this.props.id)} onClick={() => {
+                                this.props.setFollowing(true, this.props.id);
+                                UsersApi.postFollow(this.props.id).then(response=>{
                                         if(response.data.resultCode === 0){
                                             this.props.follow(this.props.id)
+                                            this.props.setFollowing(false, this.props.id);
                                         }
                                     })
                             }}>Follow</button>}

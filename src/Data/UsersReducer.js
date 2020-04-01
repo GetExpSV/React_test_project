@@ -6,13 +6,15 @@ let newUsers = 'ADD-USERS';
 let setTotalUsersCount = 'SET-TOTAL-COUNT';
 let setCurrentPageType = 'SET-CURRENT-PAGE';
 let setLoadingType = 'SET-LOADING';
+let setFollowingProgressType = 'FOLLOWING-PROGRESS';
 
 let initialUsers = {
     users: [],
     pageSize: 25,
     totalCount: 23,
     currentPage: 1,
-    isLoading: false
+    isLoading: false,
+    followingProgress: []
 }
 
 let UsersReducer = (state = initialUsers, action) => {
@@ -57,9 +59,21 @@ let UsersReducer = (state = initialUsers, action) => {
                 ...state,
                 isLoading: action.loading
             }
+        case setFollowingProgressType:
+            return{
+                ...state,
+                followingProgress: action.following
+                    ? [...state.followingProgress, action.userId]
+                    : state.followingProgress.filter(id=>id!=action.userId)
+
+            }
 
         default: return state;
     }
+}
+
+export let setFollowing = (following, userId) => {
+    return{type: setFollowingProgressType, following, userId}
 }
 
 export let follow = (id) => {
