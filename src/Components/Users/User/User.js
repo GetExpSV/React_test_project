@@ -2,38 +2,28 @@ import React from 'react';
 import user_class from './User.module.css';
 import photo from '../../../Images/users.png'
 import {NavLink} from "react-router-dom";
-import * as axios from "axios";
-import {UsersApi} from "../../../Api/UsersApi";
 
 
-class User extends React.Component{
-    render(){
-        return(
+class User extends React.Component {
+    render() {
+        return (
             <div className={user_class.container}>
                 <div className={user_class.leftArea}>
                     <div>
                         <NavLink to={`/profile/${this.props.id}`}>
-                        <img src={this.props.photoUrl.small != null? this.props.photoUrl.small : photo}/>
+                            <img src={this.props.photoUrl.small != null ? this.props.photoUrl.small : photo}/>
                         </NavLink>
                     </div>
                     <div className={user_class.itemBottom}>
-                        {this.props.followed ? <button disabled={this.props.followingProgress.some(id=> id=== this.props.id)} onClick={() => {
-                            this.props.setFollowing(true, this.props.id);
-                            UsersApi.deleteFollow(this.props.id).then(response => {
-                                    if(response.data.resultCode === 0){
+                        {this.props.followed ?
+                            <button disabled={this.props.followingProgress.some(id => id === this.props.id)}
+                                    onClick={() => {
                                         this.props.unfollow(this.props.id)
-                                        this.props.setFollowing(false, this.props.id);
-                                    }
-                                })
-                        }}>Unfollow</button> : <button disabled={this.props.followingProgress.some(id=> id=== this.props.id)} onClick={() => {
-                                this.props.setFollowing(true, this.props.id);
-                                UsersApi.postFollow(this.props.id).then(response=>{
-                                        if(response.data.resultCode === 0){
-                                            this.props.follow(this.props.id)
-                                            this.props.setFollowing(false, this.props.id);
-                                        }
-                                    })
-                            }}>Follow</button>}
+                                    }}>Unfollow</button> :
+                            <button disabled={this.props.followingProgress.some(id => id === this.props.id)}
+                                    onClick={() => {
+                                        this.props.follow(this.props.id);
+                                    }}>Follow</button>}
                     </div>
                 </div>
                 <div className={user_class.centerArea}>

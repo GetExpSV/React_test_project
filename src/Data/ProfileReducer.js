@@ -1,3 +1,5 @@
+import {UsersApi} from "../Api/UsersApi";
+
 const newPostChangeType = 'NEW-POST-CHANGE';
 const addPostType = 'ADD-POST';
 const addLikeToPostType = 'ADD-LIKE-TO-POST';
@@ -49,5 +51,13 @@ export const newPostChange = (text) => { return {type: newPostChangeType, text: 
 export const addPost = () => {return {type: addPostType}};
 export const addLikeToPost = (id) => {return {type: addLikeToPostType, id: id}};
 export const setprofileInfo = (profileInfo) => {return{type: setprofileInfoType, profileInfo}}
+
+export const userProfile = (userId) => {
+    return (dispatch)=>{
+        UsersApi.userProfile(userId).then(data=>{
+            dispatch(setprofileInfo(data));
+        })
+    }
+}
 
 export default profileReducer;

@@ -5,9 +5,7 @@ import Avatar from './Avatar/Avatar';
 import PersonInfo from "./PersonInfo/PersonInfo";
 
 const ProfileInfo = (props) => {
-    /*let avatarImg = "http://getdrawings.com/img/silhouette-avatar-12.png";*/
     let headerImg = "https://p.bigstockphoto.com/GeFvQkBbSLaMdpKXF1Zv_bigstock-Aerial-View-Of-Blue-Lakes-And--227291596.jpg";
-
     return (
         <div>
             <HeaderImg img={headerImg}/>

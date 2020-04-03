@@ -1,7 +1,7 @@
 import React from 'react'
 import * as axios from "axios";
 
-let instance = axios.create({withCredentials: true, headers: {'API-KEY': `386e7e8c-1969-48c0-aebc-06d99dc0c3c2`},
+let instance = axios.create({withCredentials: true, headers: {'API-KEY': `f89a31de-f23a-4f99-8e62-cdd0db10ddf2`},
     baseURL: 'https://social-network.samuraijs.com/api/1.0/'})
 
 export const UsersApi = {

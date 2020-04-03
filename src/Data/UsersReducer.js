@@ -1,4 +1,5 @@
 import React from 'react';
+import {UsersApi} from "../Api/UsersApi";
 
 let followType = 'FOLLOW';
 let unfollowType = 'UNFOLLOW';
@@ -76,11 +77,11 @@ export let setFollowing = (following, userId) => {
     return{type: setFollowingProgressType, following, userId}
 }
 
-export let follow = (id) => {
+export let followAccept = (id) => {
     return{type: followType, id: id}
 }
 
-export let unfollow = (id) => {
+export let unfollowAccept = (id) => {
     return{type: unfollowType, id: id}
 }
 
@@ -98,6 +99,42 @@ export let setCurrentPage = (currentPage) => {
 
 export let setLoading = (loading) => {
     return{type: setLoadingType, loading}
+}
+
+export const unfollow = (id) => {
+    return (dispatch) => {
+        dispatch(setFollowing(true, id));
+        UsersApi.deleteFollow(id).then(response => {
+            if(response.data.resultCode === 0){
+                dispatch(unfollowAccept(id));
+                dispatch(setFollowing(false, id));
+            }
+        })
+    }
+}
+
+export const follow = (id) => {
+    return (dispatch)=>{
+        dispatch(setFollowing(true, id));
+        UsersApi.postFollow(id).then(response=>{
+            if(response.data.resultCode === 0){
+                dispatch(followAccept(id))
+                dispatch(setFollowing(false, id));
+            }
+        })
+    }
+}
+
+export const getUser = (currentPage, pageSize) => {
+    return (dispatch) => {
+        dispatch(setLoading(true));
+        UsersApi.getUsers(currentPage, pageSize).then(data =>
+        {
+            dispatch(setLoading(false));
+            dispatch(setUsers(data.items));
+            dispatch(setTotalCount(data.totalCount/3));
+        });
+    }
 }
 
 export default UsersReducer;

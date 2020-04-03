@@ -4,9 +4,9 @@ import ProfileInfoContainer from "./ProfileInfo/ProfileInfoContainer";
 import PostsContainer from "./Posts/PostsContainer";
 
 
-class Profile extends React.Component{
-    render(){
-        return(
+class Profile extends React.Component {
+    render() {
+        return (
             <div className={profile_class.content}>
                 <div>
                     <ProfileInfoContainer/>

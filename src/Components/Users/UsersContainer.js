@@ -1,10 +1,10 @@
 import React from 'react';
 import Users from "./Users";
 import {connect} from "react-redux";
-import {setCurrentPage, setLoading, setTotalCount, setUsers} from "../../Data/UsersReducer";
+import {getUser, setCurrentPage, setTotalCount} from "../../Data/UsersReducer";
 
 let mapStateToProps = (state) => {
-    return{
+    return {
         users: state.usersPage.users,
         pageSize: state.usersPage.pageSize,
         totalCount: state.usersPage.totalCount,
@@ -13,6 +13,6 @@ let mapStateToProps = (state) => {
     }
 }
 
-let UsersContainer = connect(mapStateToProps, {setUsers, setTotalCount, setCurrentPage, setLoading})(Users);
+let UsersContainer = connect(mapStateToProps, {setTotalCount, setCurrentPage, getUser})(Users);
 
 export default UsersContainer;

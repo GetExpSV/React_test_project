@@ -3,10 +3,6 @@ import Friends from "./Friends";
 import {connect} from "react-redux";
 
 
-/*let FriendsContainer = (props) => {
-    return(<Friends friends={props.friends}/>)
-}*/
-
 let mapStateToProps = (state) => {
     return{
         friends: state.messagesPage.dialogsData
