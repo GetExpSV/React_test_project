@@ -9,7 +9,12 @@ let initialProfile = {
     postsData: [{id: 1, message: 'Post 1', likeCount: 5}, {id: 2, message: 'Post 2', likeCount: 3}],
     profileInfoData: [{id: 1, name: 'Vladislav', surname: 'Savinykh', birthday: '01.01.0000'}],
     newPost: '',
-    profileInfo: null
+    profileInfo: {fullName: null,
+        userId: null,
+        photos: {
+            small: null,
+            large: null
+        }}
 };
 
 let profileReducer = (state= initialProfile, action) => {
@@ -50,12 +55,12 @@ let profileReducer = (state= initialProfile, action) => {
 export const newPostChange = (text) => { return {type: newPostChangeType, text: text}};
 export const addPost = () => {return {type: addPostType}};
 export const addLikeToPost = (id) => {return {type: addLikeToPostType, id: id}};
-export const setprofileInfo = (profileInfo) => {return{type: setprofileInfoType, profileInfo}}
+export const setProfileInfo = (profileInfo) => {return{type: setprofileInfoType, profileInfo}}
 
-export const userProfile = (userId) => {
+export const getUserProfile = (userId) => {
     return (dispatch)=>{
         UsersApi.userProfile(userId).then(data=>{
-            dispatch(setprofileInfo(data));
+            dispatch(setProfileInfo(data));
         })
     }
 }
