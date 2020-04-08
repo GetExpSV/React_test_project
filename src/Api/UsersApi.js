@@ -1,7 +1,7 @@
 import React from 'react'
 import * as axios from "axios";
 
-let instance = axios.create({withCredentials: true, headers: {'API-KEY': `c7ddb94c-998a-4404-929e-3627552358cd`},
+let instance = axios.create({withCredentials: true, headers: {'API-KEY': `69710bad-f217-4701-b11b-e1d4701c82d5`},
     baseURL: 'https://social-network.samuraijs.com/api/1.0/'})
 
 export const UsersApi = {
@@ -22,5 +22,17 @@ export const UsersApi = {
     },
     userProfile(userId){
         return instance.get('profile/' + userId).then(response=>{return response.data})
+    },
+    getStatus(userId){
+        return instance.get('profile/status/' + userId)
+    },
+    setStatus(text){
+        return instance.put('profile/status/', {status: text})
+    },
+    setLogin(authData, captcha){
+        return instance.post(`auth/login?email=${authData.email}&password=${authData.password}&rememberMe=${authData.rememberMe || 'false'}`, {captcha})
+    },
+    getCaptcha(){
+        return instance.get('security/get-captcha-url')
     }
 }

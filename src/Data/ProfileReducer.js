@@ -4,6 +4,8 @@ const newPostChangeType = 'NEW-POST-CHANGE';
 const addPostType = 'ADD-POST';
 const addLikeToPostType = 'ADD-LIKE-TO-POST';
 const setprofileInfoType = 'SET-PERSON-INFO';
+const setStatusType = 'SET-STATUS';
+const changeStatusType = 'CHANGE-STATUS';
 
 let initialProfile = {
     postsData: [{id: 1, message: 'Post 1', likeCount: 5}, {id: 2, message: 'Post 2', likeCount: 3}],
@@ -14,7 +16,8 @@ let initialProfile = {
         photos: {
             small: null,
             large: null
-        }}
+        }},
+    status: ''
 };
 
 let profileReducer = (state= initialProfile, action) => {
@@ -47,6 +50,16 @@ let profileReducer = (state= initialProfile, action) => {
                 ...state,
                 profileInfo: action.profileInfo
         }
+        case setStatusType:
+            return{
+                ...state,
+                status: action.status
+        }
+        case changeStatusType:
+            return{
+                ...state,
+                status: action.status
+        }
         default: return state;
     }
 
@@ -56,6 +69,8 @@ export const newPostChange = (text) => { return {type: newPostChangeType, text: 
 export const addPost = () => {return {type: addPostType}};
 export const addLikeToPost = (id) => {return {type: addLikeToPostType, id: id}};
 export const setProfileInfo = (profileInfo) => {return{type: setprofileInfoType, profileInfo}}
+export const setStatus = (status) => {return {type: setStatusType, status}}
+export const changeStatus = (status) => {return{type: changeStatusType, status}}
 
 export const getUserProfile = (userId) => {
     return (dispatch)=>{
@@ -63,6 +78,22 @@ export const getUserProfile = (userId) => {
             dispatch(setProfileInfo(data));
         })
     }
+}
+
+export const getStatus = (userId) => (dispatch) =>{
+    UsersApi.getStatus(userId).then(response =>{
+        dispatch(setStatus(response.data))
+    })
+}
+
+export const putStatus = (status) => (dispatch) =>{
+    UsersApi.setStatus(status);
+}
+
+export const postLogin = (data) => (dispatch) =>{
+    UsersApi.getCaptcha().then(response=>{
+        UsersApi.setLogin(data, response.data)
+    })
 }
 
 export default profileReducer;
