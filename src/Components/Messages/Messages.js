@@ -2,22 +2,43 @@ import React from 'react';
 import messages_class from './Messages.module.css';
 import Dialog from './Dialog/Dialog'
 import DialogItem from "./DialogItem/DialogItem";
+import MessageReduxForm from "./messageForm";
+/*import {Field, reduxForm, reset} from "redux-form";
 
+let messageForm = (props) => {
+    return (
+        <form onSubmit={props.handleSubmit} onChange={props.handleChange}>
+            <div>
+                <Field component={'textarea'} name={'message'} placeholder={'message here'}/>
+            </div>
+            <div>
+                <button>Add message</button>
+            </div>
+        </form>
+    )
+}
 
+const afterSubmit = (result, dispatch) =>
+    dispatch(reset('message'));
+
+let MessageReduxForm = reduxForm({form: 'message', onSubmitSuccess: afterSubmit})(messageForm)*/
 
 const Messages = (props) => {
 
-    let dialogsArray = props.dialogsData.map(data => <DialogItem name={data.name} id={data.id} image={data.image} key={data.id}/>);
+    let dialogsArray = props.dialogsData.map(data => <DialogItem name={data.name} id={data.id} image={data.image}
+                                                                 key={data.id}/>);
     let messagesArray = props.messagesData.map(data => <Dialog message={data.message} id={data.id} key={data.id}/>);
 
 
     let newMessageChanges = (e) => {
-        props.newMessageChange(e.target.value);
+        props.newMessageChange(e.message);
     }
 
-    let addNewMessage = () =>{
+    let addNewMessage = (formData) => {
         props.addMessage();
     }
+
+    props.initialize('message', {message: props.newMessage})
     return (
         <div>
             <h4>Dialogs</h4>
@@ -29,8 +50,7 @@ const Messages = (props) => {
                     {messagesArray}
                 </div>
                 <div className={messages_class.textItem}>
-                    <textarea value={props.newMessage} onChange={newMessageChanges}></textarea>
-                    <button onClick={addNewMessage}>Send</button>
+                    <MessageReduxForm onSubmit={addNewMessage} onChange={newMessageChanges}/>
                 </div>
             </div>
         </div>

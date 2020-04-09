@@ -9,7 +9,7 @@ let initialState = {
     id: null,
     login: null,
     email: null,
-    isAuth: false,
+    isAuth: null,
     userImage: 'https://c7.hotpng.com/preview/406/211/692/5bd7bf9d2fae5.jpg'
 }
 
@@ -61,6 +61,14 @@ export const auth = () => {
             }
         })
     }
+}
+
+export const postLogin = (data) => (dispatch) =>{
+    UsersApi.getCaptcha().then(response=>{
+        UsersApi.setLogin(data, response.data).then(response=>{
+            dispatch(setIsAuth(true))
+        })
+    })
 }
 
 

@@ -4,6 +4,7 @@ import {addMessage, newMessageChange} from "../../Data/MessagesReducer";
 import {connect} from "react-redux";
 import {withAuthRedirect} from "../../Hoc/withRedirect";
 import {compose} from "redux";
+import {initialize} from 'redux-form';
 
 
 let mapStateToProps = (state) => {
@@ -16,6 +17,6 @@ let mapStateToProps = (state) => {
 
 
 export default compose(
-    connect(mapStateToProps, {newMessageChange, addMessage}),
+    connect(mapStateToProps, {newMessageChange, addMessage, initialize}),
     withAuthRedirect
 )(Messages)
