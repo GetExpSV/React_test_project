@@ -34,5 +34,8 @@ export const UsersApi = {
     },
     getCaptcha(){
         return instance.get('security/get-captcha-url')
+    },
+    logOut(){
+        return instance.delete('auth/login')
     }
 }

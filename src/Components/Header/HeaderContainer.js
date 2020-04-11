@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from "./Header";
 import {connect} from "react-redux";
-import {auth,} from "../../Data/Auth";
+import {auth, Logout,} from "../../Data/Auth";
 
 class HeaderContainer extends React.Component{
 
@@ -22,4 +22,4 @@ let mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, {auth})(HeaderContainer);
+export default connect(mapStateToProps, {auth, Logout})(HeaderContainer);

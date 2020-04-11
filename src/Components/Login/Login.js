@@ -5,6 +5,9 @@ import {postLogin} from "../../Data/Auth";
 import {required} from "../../validates/validateField";
 import {fieldComponent} from "../../FieldComponent/fieldComponent";
 import loginClass from './login.module.css'
+import {withAuthRedirect} from "../../Hoc/withRedirect";
+import {compose} from "redux";
+import {Redirect} from "react-router-dom";
 
 let component = fieldComponent("input")
 
@@ -32,10 +35,10 @@ const LoginReduxForm = reduxForm({form: 'login'})(loginForm);
 class Login extends React.Component {
     onSubmit = (formData) => {
         this.props.postLogin(formData)
-        console.log(formData)
     }
 
     render() {
+        if(this.props.isAuth === true) return <Redirect to={'/profile'}/>
         return (
             <div>
                 <div className={loginClass.item}>Login</div>
@@ -47,7 +50,7 @@ class Login extends React.Component {
 
 let mapStateToProps = (state) =>{
     return{
+        isAuth: state.auth.isAuth
     }
 }
-
 export default connect(mapStateToProps, {postLogin})(Login);
