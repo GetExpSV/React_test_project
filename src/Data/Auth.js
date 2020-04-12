@@ -1,4 +1,5 @@
 import {UsersApi} from "../Api/UsersApi";
+import {stopSubmit} from 'redux-form'
 
 const setAuthUserType = 'SET-AUTH-USER';
 const setIsAuthType = 'SET-AUTH';
@@ -68,6 +69,10 @@ export const postLogin = (data) => (dispatch) => {
         UsersApi.setLogin(data, response.data).then(response => {
             if (response.data.resultCode === 0) {
                 dispatch(auth())
+            }
+            else{
+                let message = response.data.messages.length > 0 ? response.data.messages[0] : 'some error'
+                dispatch(stopSubmit('login', {_error: message}))
             }
         })
     })

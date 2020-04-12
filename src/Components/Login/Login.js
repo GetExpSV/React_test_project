@@ -5,8 +5,6 @@ import {postLogin} from "../../Data/Auth";
 import {required} from "../../validates/validateField";
 import {fieldComponent} from "../../FieldComponent/fieldComponent";
 import loginClass from './login.module.css'
-import {withAuthRedirect} from "../../Hoc/withRedirect";
-import {compose} from "redux";
 import {Redirect} from "react-router-dom";
 
 let component = fieldComponent("input")
@@ -23,6 +21,7 @@ let loginForm = (props) => {
             <div>
                 <Field type="checkbox" name="rememberMe" component={component}/> remember me
             </div>
+            {props.error && <div className={loginClass.someError}>{props.error}</div>}
             <div>
                 <button>Login</button>
             </div>

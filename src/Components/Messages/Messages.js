@@ -3,25 +3,6 @@ import messages_class from './Messages.module.css';
 import Dialog from './Dialog/Dialog'
 import DialogItem from "./DialogItem/DialogItem";
 import MessageReduxForm from "./messageForm";
-/*import {Field, reduxForm, reset} from "redux-form";
-
-let messageForm = (props) => {
-    return (
-        <form onSubmit={props.handleSubmit} onChange={props.handleChange}>
-            <div>
-                <Field component={'textarea'} name={'message'} placeholder={'message here'}/>
-            </div>
-            <div>
-                <button>Add message</button>
-            </div>
-        </form>
-    )
-}
-
-const afterSubmit = (result, dispatch) =>
-    dispatch(reset('message'));
-
-let MessageReduxForm = reduxForm({form: 'message', onSubmitSuccess: afterSubmit})(messageForm)*/
 
 const Messages = (props) => {
 

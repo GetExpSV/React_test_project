@@ -1,3 +1,7 @@
 .item{
     margin: 10px;
 }
+
+.someError{
+    color: red;
+}
