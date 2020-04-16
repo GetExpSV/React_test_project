@@ -3,7 +3,6 @@ import Users from "./Users";
 import {connect} from "react-redux";
 import {getUser, setCurrentPage, setTotalCount} from "../../Data/UsersReducer";
 import {compose} from "redux";
-import {withAuthRedirect} from "../../Hoc/withRedirect";
 
 let mapStateToProps = (state) => {
     return {
@@ -16,6 +15,5 @@ let mapStateToProps = (state) => {
 }
 
 export default compose(
-    connect(mapStateToProps, {setTotalCount, setCurrentPage, getUser}),
-    withAuthRedirect
+    connect(mapStateToProps, {setTotalCount, setCurrentPage, getUser})
 )(Users)

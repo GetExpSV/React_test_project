@@ -5,9 +5,9 @@ import {auth, Logout,} from "../../Data/Auth";
 
 class HeaderContainer extends React.Component{
 
-    componentDidMount() {
+    /*componentDidMount() {
         this.props.auth();
-    }
+    }*/
 
     render(){
         return(<Header {...this.props}/>);
@@ -22,4 +22,4 @@ let mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, {auth, Logout})(HeaderContainer);
+export default connect(mapStateToProps, {/*auth, */Logout})(HeaderContainer);

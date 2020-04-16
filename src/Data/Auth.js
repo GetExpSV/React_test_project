@@ -51,7 +51,7 @@ export const setImage = (image) => {
 export const auth = () => {
     return (dispatch) => {
         dispatch(setIsAuth(false));
-        UsersApi.userAuth().then(response => {
+        return UsersApi.userAuth().then(response => {
             if (response.data.resultCode === 0) {
                 let user = response.data.data;
                 dispatch(setAuthUser(user.id, user.login, user.email));
