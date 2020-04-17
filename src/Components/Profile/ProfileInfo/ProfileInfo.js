@@ -12,7 +12,7 @@ const ProfileInfo = (props) => {
             <div className={profileInfo_class.profile}>
                 <Avatar avatarImg={props.photos.large}/>
                 <div className={profileInfo_class.info}>
-                    <PersonInfo name={props.fullName} key={props.userId}/>
+                    <PersonInfo name={props.fullName} key={props.userId} status={props.status} putStatus={props.putStatus}/>
                 </div>
             </div>
         </div>

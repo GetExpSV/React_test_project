@@ -1,7 +1,7 @@
 import React from 'react';
 import ProfileInfo from "./ProfileInfo";
 import {connect} from "react-redux";
-import {getStatus, getUserProfile} from "../../../Data/ProfileReducer";
+import {getStatus, getUserProfile, putStatus} from "../../../Data/ProfileReducer";
 import {withRouter} from "react-router-dom";
 import {compose} from "redux";
 
@@ -9,7 +9,8 @@ import {compose} from "redux";
 let mapStateToProps = (state) => {
     return {
         profileInfo: state.profilePage.profileInfo,
-        userId: state.auth.id
+        userId: state.auth.id,
+        status: state.profilePage.status
     }
 }
 
@@ -29,11 +30,11 @@ class ProfileInfoContainer extends React.Component {
     }
 
     render() {
-        return (<ProfileInfo {...this.props.profileInfo}/>)
+        return (<ProfileInfo {...this.props.profileInfo} status={this.props.status} putStatus={this.props.putStatus}/>)
     }
 }
 
 export default compose(
-    connect(mapStateToProps, {getUserProfile, getStatus}),
+    connect(mapStateToProps, {getUserProfile, getStatus, putStatus}),
     withRouter
 )(ProfileInfoContainer)
