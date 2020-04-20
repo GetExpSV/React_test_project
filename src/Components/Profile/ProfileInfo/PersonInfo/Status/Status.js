@@ -1,10 +1,14 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 
 
 let Status = (props) =>{
 
     let [editMod, setEditMod] = useState(false)
     let [status, setStatus] = useState(props.status)
+    
+    useEffect(()=>{
+        setStatus(props.status);
+    }, [props.status])
 
     let activateEditMod = () =>{
         setEditMod(true)
