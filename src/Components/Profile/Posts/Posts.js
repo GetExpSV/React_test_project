@@ -16,7 +16,6 @@ const Posts = (props) => {
         props.newPostChange(e.text);
     }
     props.initialize('post', {text: props.newPost})
-
     return (<div className={posts_class.newPost}>New Post
         <div>
             <PostReduxForm onSubmit={addPost} onChange={postChange}/>

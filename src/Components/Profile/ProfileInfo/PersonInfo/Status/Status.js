@@ -5,7 +5,7 @@ let Status = (props) =>{
 
     let [editMod, setEditMod] = useState(false)
     let [status, setStatus] = useState(props.status)
-    
+
     useEffect(()=>{
         setStatus(props.status);
     }, [props.status])

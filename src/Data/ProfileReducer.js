@@ -90,10 +90,4 @@ export const putStatus = (status) => (dispatch) =>{
     UsersApi.setStatus(status);
 }
 
-/*export const postLogin = (data) => (dispatch) =>{
-    UsersApi.getCaptcha().then(response=>{
-        UsersApi.setLogin(data, response.data)
-    })
-}*/
-
 export default profileReducer;
