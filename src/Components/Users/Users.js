@@ -3,6 +3,7 @@ import UserContainer from "./User/UserContainer";
 import users_class from './Users.module.css'
 import Loader from "../Loader/Loader";
 import LoadingOverlay from 'react-loading-overlay'
+import Pagination from "./Pagination/Pagination";
 
 
 class Users extends React.Component {
@@ -20,7 +21,7 @@ class Users extends React.Component {
 
         let totalPage = Math.ceil(this.props.totalCount / this.props.pageSize);
 
-        let page = [];
+        /*let page = [];
         for (let i = 1; i <= totalPage; i++) {
             page.push(i);
         }
@@ -31,7 +32,7 @@ class Users extends React.Component {
             }}>
                 <div className={this.props.currentPage === data && users_class.activePage}>{data}</div>
             </div>)
-        })
+        })*/
 
         let usersArray = this.props.users.map(data => <UserContainer key={data.id} id={data.id} followed={data.followed}
                                                                      fullName={data.name}
@@ -43,7 +44,8 @@ class Users extends React.Component {
             <div>
                 {this.props.isLoading ? <LoadingOverlay active={true} spinner={<Loader/>}> </LoadingOverlay> : null}
                 <div className={users_class.pageItem}>
-                    {pageArray}
+                    <Pagination currentPage={this.props.currentPage} setCurrentPage={this.onChangeCurrentPage}
+                                 totalPage={totalPage}/>
                 </div>
                 <div className={users_class.container}>
                     {usersArray}

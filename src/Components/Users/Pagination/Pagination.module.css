@@ -1,0 +1,23 @@
+button.activePage{
+    background-color: grey;
+    color: white;
+    outline: none;
+    width: 50px;
+    padding: 5px;
+    border: none;
+}
+
+button:disabled.pagination__button{
+    color: red;
+}
+
+button.pagination__button{
+    width: 50px;
+    border: none;
+    outline: none;
+    padding: 5px;
+}
+
+.pagination__container{
+    margin: 0 auto;
+}

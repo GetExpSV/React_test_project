@@ -132,7 +132,7 @@ export const getUser = (currentPage, pageSize) => {
         {
             dispatch(setLoading(false));
             dispatch(setUsers(data.items));
-            dispatch(setTotalCount(data.totalCount/3));
+            dispatch(setTotalCount(data.totalCount));
         });
     }
 }
