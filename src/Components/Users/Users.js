@@ -21,19 +21,6 @@ class Users extends React.Component {
 
         let totalPage = Math.ceil(this.props.totalCount / this.props.pageSize);
 
-        /*let page = [];
-        for (let i = 1; i <= totalPage; i++) {
-            page.push(i);
-        }
-
-        let pageArray = page.map(data => {
-            return (<div className={users_class.item} onClick={() => {
-                this.onChangeCurrentPage(data)
-            }}>
-                <div className={this.props.currentPage === data && users_class.activePage}>{data}</div>
-            </div>)
-        })*/
-
         let usersArray = this.props.users.map(data => <UserContainer key={data.id} id={data.id} followed={data.followed}
                                                                      fullName={data.name}
                                                                      status={data.status}

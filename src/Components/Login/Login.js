@@ -21,6 +21,10 @@ let loginForm = (props) => {
             <div>
                 <Field type="checkbox" name="rememberMe" component={component}/> remember me
             </div>
+            {props.isCaptcha && <div><img src={props.captcha.url}/>
+                <Field component={component} name="captcha" validate={[required]}/>
+            </div>}
+
             {props.error && <div className={loginClass.someError}>{props.error}</div>}
             <div>
                 <button>Login</button>
@@ -37,11 +41,12 @@ class Login extends React.Component {
     }
 
     render() {
+        debugger;
         if(this.props.isAuth === true) return <Redirect to={'/profile'}/>
         return (
             <div>
                 <div className={loginClass.item}>Login</div>
-                <LoginReduxForm onSubmit={this.onSubmit}/>
+                <LoginReduxForm onSubmit={this.onSubmit} captcha={this.props.captcha} isCaptcha={this.props.isCaptcha}/>
             </div>
         )
     }
@@ -49,7 +54,9 @@ class Login extends React.Component {
 
 let mapStateToProps = (state) =>{
     return{
-        isAuth: state.auth.isAuth
+        isAuth: state.auth.isAuth,
+        isCaptcha: state.auth.isCaptcha,
+        captcha: state.auth.captcha
     }
 }
 export default connect(mapStateToProps, {postLogin})(Login);

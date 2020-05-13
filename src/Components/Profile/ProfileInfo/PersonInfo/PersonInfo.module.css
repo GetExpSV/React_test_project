@@ -2,3 +2,19 @@
     color: gray;
     margin-right: 10px;
 }
+
+.container div{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 500px;
+}
+
+.container{
+    width: 100%;
+}
+
+.contacts__item{
+    padding-left: 50px;
+    color: gray;
+    margin-right: 10px;
+}

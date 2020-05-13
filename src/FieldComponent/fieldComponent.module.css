@@ -5,3 +5,13 @@
 .elementError{
     border: 2px solid red;
 }
+
+.item textarea{
+    width: 80%;
+    height: 100px;
+    resize: none;
+    outline: none;
+}
+.item input{
+    outline: none;
+}

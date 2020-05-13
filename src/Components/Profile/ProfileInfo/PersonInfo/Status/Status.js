@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import s from '../PersonInfo.module.css';
 
 
 let Status = (props) =>{
@@ -25,7 +26,7 @@ let Status = (props) =>{
 
     return(<div>
         {!editMod ?
-            <div onDoubleClick={activateEditMod}>{status || "status can be here"}</div> :
+            <div onDoubleClick={activateEditMod}><span className={s.item}>Status: </span>{status || "status can be here"}</div> :
             <input value={status} onBlur={deactivateEditMod} autoFocus={true} onChange={changeStatus}/>
         }
     </div>)
