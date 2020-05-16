@@ -7,13 +7,29 @@ let initialMessage = {
         {id: 3, name: 'Vova', image: 'https://c7.hotpng.com/preview/269/335/789/emote-emoticon-avatar-discord-avatar.jpg'},
         {id: 4, name: 'Alex', image: 'https://c7.hotpng.com/preview/406/211/692/5bd7bf9d2fae5.jpg'},
         {id: 5, name: "Ivan", image: 'https://toppng.com/uploads/preview/andasnake-discord-emoji-admiral-bahroo-christmas-emotes-115629254478qzen15w5i.png'}],
-    messagesData:[{id: 1, message: 'Hi'},
+    messagesData:[
+        {id: 1, message: 'Hi'},
         {id: 2, message: 'How are you?'},
         {id: 1, message: 'I\'m fine'}],
     newMessage: ''
 };
 
-let messagesReducer = (state = initialMessage, action) => {
+type messagesStateType = typeof initialMessage
+
+type newMessageChange = {
+    type: typeof newMessageChangeType,
+    message: string
+}
+export const newMessageChange = (text: string): newMessageChange => {return {type: newMessageChangeType, message: text}};
+
+type addMessage = {
+    type: typeof addMessageType
+}
+export const addMessage = (): addMessage => {return {type: addMessageType}};
+
+type messagesActionType = | newMessageChange | addMessage
+
+let messagesReducer = (state = initialMessage, action: messagesActionType): messagesStateType => {
     switch(action.type){
         case newMessageChangeType:
             return {
@@ -21,7 +37,7 @@ let messagesReducer = (state = initialMessage, action) => {
                 newMessage: action.message
             }
         case addMessageType:
-            let messageId;
+            let messageId = 0;
             if(state.messagesData[state.messagesData.length-1].id === 2){
                 messageId = 1;
             }
@@ -38,9 +54,4 @@ let messagesReducer = (state = initialMessage, action) => {
     }
 }
 
-
-export const newMessageChange = (text) => {return {type: newMessageChangeType, message: text}};
-export const addMessage = () => {return {type: addMessageType}};
-
-
-export default messagesReducer;
+export default messagesReducer
