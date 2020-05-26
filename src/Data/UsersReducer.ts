@@ -1,4 +1,6 @@
 import {UsersApi} from "../Api/UsersApi";
+import {ThunkAction} from "redux-thunk";
+import { RootState } from "./Redux-store";
 
 const followType = 'FOLLOW';
 const unfollowType = 'UNFOLLOW';
@@ -9,23 +11,24 @@ const setLoadingType = 'SET-LOADING';
 const setFollowingProgressType = 'FOLLOWING-PROGRESS';
 
 
-type usersType = {
-    id: number | null,
+export type usersType = {
+    id: number,
     followed: boolean,
     name: string | null,
     status: string | null,
     photos: {
         small: string | null,
-        large: string | null}
+        large: string | null
+    }
 }
 
 let initialUsers = {
-    users: Array<usersType>(),
+    users: [] as Array<usersType>,
     pageSize: 25 as number | null,
     totalCount: 23 as number | null,
     currentPage: 1 as number | null,
     isLoading: false,
-    followingProgress: Array<number>()
+    followingProgress: [] as Array<number>
 };
 
 type usersStateType = typeof initialUsers
@@ -159,7 +162,7 @@ let UsersReducer = (state = initialUsers, action: usersActionsType): usersStateT
     }
 };
 
-export const unfollow = (id: number) => async (dispatch: any) => {
+export const unfollow = (id: number): ThunkAction<void, RootState, unknown, usersActionsType> => async (dispatch) => {
     dispatch(setFollowing(true, id));
     let response = await UsersApi.deleteFollow(id);
     if (response.data.resultCode === 0) {
@@ -169,7 +172,7 @@ export const unfollow = (id: number) => async (dispatch: any) => {
 };
 
 
-export const follow = (id: number) => async (dispatch: any) => {
+export const follow = (id: number): ThunkAction<void, RootState, unknown, usersActionsType> => async (dispatch) => {
     dispatch(setFollowing(true, id));
     let response = await UsersApi.postFollow(id);
     if (response.data.resultCode === 0) {
@@ -179,14 +182,13 @@ export const follow = (id: number) => async (dispatch: any) => {
 };
 
 
-export const getUser = (currentPage: number, pageSize: number) => async (dispatch: any) => {
+export const getUser = (currentPage: number | null, pageSize: number | null): ThunkAction<void, RootState, unknown, usersActionsType> => async (dispatch) => {
     dispatch(setLoading(true));
     let response = await UsersApi.getUsers(currentPage, pageSize);
     dispatch(setLoading(false));
     dispatch(setUsers(response.items));
     dispatch(setTotalCount(response.totalCount))
 };
-
 
 export default UsersReducer
 

@@ -1,10 +1,13 @@
 import {auth} from "./Auth";
+import { ThunkAction } from "redux-thunk";
+import { RootState } from "./Redux-store";
+import { Action } from "redux";
 
-const initializeType = 'INITIALIZE_TYPE'
+const initializeType = 'INITIALIZE_TYPE';
 
 let initialState = {
     initialized: false
-}
+};
 type initialStateType = typeof initialState
 
 type setInitializeActionType = {
@@ -21,16 +24,16 @@ export let appReducer = (state = initialState, action: appActionType): initialSt
             return{
                 ...state,
                 initialized: true
-            }
+            };
         default:
             return state;
     }
-}
+};
 
 
-export let initializeApp = () => (dispatch: any) =>{
+export let initializeApp = (): ThunkAction<void, RootState, unknown, appActionType> => (dispatch) =>{
     let promises = dispatch(auth());
     promises.then(()=>{
         dispatch(setInitialize())
     })
-}
+};
